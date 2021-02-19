@@ -1,0 +1,19 @@
+{
+  "short_name": "boilerplate",
+  "name": "boilerplate",
+  "icons": [
+    {
+      "src": "icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#efefef"
+}
