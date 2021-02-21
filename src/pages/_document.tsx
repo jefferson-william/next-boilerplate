@@ -22,7 +22,6 @@ export default class MyDocument extends Document {
       <Html lang="pt-BR">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#efefef" />
           <link rel="icon" href={`${process.env.PUBLIC_URL}/icon-32x32.png`} sizes="32x32" />
           <link rel="icon" href={`${process.env.PUBLIC_URL}/icon-192x192.png`} sizes="192x192" />
