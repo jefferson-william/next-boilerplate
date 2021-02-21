@@ -2,12 +2,14 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { NextPage } from 'next'
 import Link from 'next/link'
+import { END } from 'redux-saga'
 import { ReactComponent as Logo } from '~/assets/images/logo.svg'
 import { Home } from '~/pages/home/styles'
+import wrapperStore from '~/store'
 import * as RepoActions from '~/store/Repo/actions'
 import GlobalStyle from '~/styles/global'
-import States from '~/types/store/allStates'
 import { Repo } from '~/types/store/Repo/state'
+import States from '~/types/store/rootStates'
 
 const Component: NextPage = () => {
   const repos = useSelector<States, Repo[]>((state) => state.Repo.repos)
@@ -38,10 +40,12 @@ const Component: NextPage = () => {
   )
 }
 
-Component.getInitialProps = ({ store }) => {
+export const getServerSideProps = wrapperStore.getServerSideProps<Promise<void>>(async ({ store }) => {
   store.dispatch(RepoActions.reposRequest('jefferson-william'))
 
-  return {}
-}
+  store.dispatch(END)
+
+  await (store as any).sagaTask.toPromise()
+})
 
 export default Component

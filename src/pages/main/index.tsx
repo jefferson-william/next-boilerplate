@@ -5,8 +5,8 @@ import { ReactComponent as Logo } from '~/assets/images/logo.svg'
 import { Main } from '~/pages/main/styles'
 import * as RepoActions from '~/store/Repo/actions'
 import GlobalStyle from '~/styles/global'
-import States from '~/types/store/allStates'
 import { Repo } from '~/types/store/Repo/state'
+import States from '~/types/store/rootStates'
 
 const Component: React.FC = () => {
   const dispatch = useDispatch()

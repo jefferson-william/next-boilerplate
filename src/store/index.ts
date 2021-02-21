@@ -1,23 +1,25 @@
-import { MakeStore } from 'next-redux-wrapper'
-import { createStore, applyMiddleware } from 'redux'
+import { createWrapper } from 'next-redux-wrapper'
+import { createStore as createReduxStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from '~/store/rootReducer'
-import rootSaga from '~/store/rootSaga'
+import ALL_INITIAL_STATES from '~/store/rootStates'
+import States from '~/types/store/rootStates'
+import rootSaga from './rootSaga'
 
-const configureStore: MakeStore | any = (preloadedState: any, { isServer = true, req = null }: any) => {
-  const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware()
 
-  const middlewares = [sagaMiddleware]
+const middlewares = applyMiddleware(sagaMiddleware)
 
-  const enhancer: any = applyMiddleware(...middlewares)
+export const createStore = () => createReduxStore<States, any, any, any>(rootReducer, ALL_INITIAL_STATES, middlewares)
 
-  const store: any = createStore(rootReducer(), preloadedState, enhancer)
+export const store = () => {
+  const myStore = createStore()
 
-  if (req || !isServer) {
-    store.sagaTask = sagaMiddleware.run(rootSaga)
-  }
+  myStore.sagaTask = sagaMiddleware.run(rootSaga)
 
-  return store
+  return myStore
 }
 
-export default configureStore
+const wrapperStore = createWrapper<States>(store, { debug: process.env.NODE_ENV === 'development' })
+
+export default wrapperStore
