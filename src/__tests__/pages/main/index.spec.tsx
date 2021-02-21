@@ -1,10 +1,4 @@
-import React from 'react'
-import { act } from 'react-dom/test-utils'
-import { Provider } from 'react-redux'
-import { RouterContext } from 'next-server/dist/lib/router-context'
-import { render, waitFor } from '@testing-library/react'
-import axios from 'axios'
-import MockAdapter from 'axios-mock-adapter'
+import { getMoxios } from '~/__mocks__/lib/axios'
 import { camelcase } from '~/__mocks__/store/Repo/sagas'
 import Main from '~/pages/main'
 import configureStore from '~/store'
@@ -14,7 +8,7 @@ import '~/__mocks__/nextRouter'
 describe('pages/main', () => {
   beforeEach(() => {
     const route = 'https://api.github.com/users/jefferson-william/repos'
-    const moxios = new MockAdapter(axios)
+    const moxios = getMoxios()
 
     moxios.onGet(route).reply(200, camelcase)
   })
