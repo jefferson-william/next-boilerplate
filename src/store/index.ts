@@ -2,18 +2,15 @@ import { createWrapper } from 'next-redux-wrapper'
 import { createStore as createReduxStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootReducer from '~/store/rootReducer'
-import ALL_INITIAL_STATES from '~/store/rootStates'
+import rootSaga from '~/store/rootSaga'
 import States from '~/types/store/rootStates'
-import rootSaga from './rootSaga'
-
-const sagaMiddleware = createSagaMiddleware()
-
-const middlewares = applyMiddleware(sagaMiddleware)
-
-export const createStore = () => createReduxStore<States, any, any, any>(rootReducer, ALL_INITIAL_STATES, middlewares)
 
 export const store = () => {
-  const myStore = createStore()
+  const sagaMiddleware = createSagaMiddleware()
+
+  const middlewares = applyMiddleware(sagaMiddleware)
+
+  const myStore = createReduxStore<States, any, any, any>(rootReducer, middlewares)
 
   myStore.sagaTask = sagaMiddleware.run(rootSaga)
 
