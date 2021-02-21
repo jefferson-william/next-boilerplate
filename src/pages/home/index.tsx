@@ -7,7 +7,7 @@ import { ReactComponent as Logo } from '~/assets/images/logo.svg'
 import { Home } from '~/pages/home/styles'
 import wrapperStore from '~/store'
 import * as RepoActions from '~/store/Repo/actions'
-import GlobalStyle from '~/styles/global'
+import { Home } from '~/styles/pages/home'
 import { Repo } from '~/types/store/Repo/state'
 import States from '~/types/store/rootStates'
 

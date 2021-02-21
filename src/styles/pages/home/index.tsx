@@ -21,6 +21,3 @@ export const Home = styled.div`
     color: white;
   }
 `
-
-// tslint:disable:no-empty
-export default () => {}
