@@ -6,18 +6,14 @@ export const Home = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 100%;
-  color: white;
-  text-align: center;
-  background-color: #282c34;
+  text-align: left;
   svg {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
+    margin: 36px 0;
     pointer-events: none;
   }
   p {
     margin-bottom: 48px;
-  }
-  a {
-    color: white;
   }
 `
