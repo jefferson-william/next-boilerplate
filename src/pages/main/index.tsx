@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { NextPage } from 'next'
 import Link from 'next/link'
 import { ReactComponent as Logo } from '~/assets/images/logo.svg'
-import { Main } from '~/pages/main/styles'
+import Layout from '~/components/Layout'
 import * as RepoActions from '~/store/Repo/actions'
 import { Main } from '~/styles/pages/main'
 import { Repo } from '~/types/store/Repo/state'
 import States from '~/types/store/rootStates'
 
-const Component: React.FC = () => {
+const Component: NextPage = () => {
   const dispatch = useDispatch()
   const repos = useSelector<States, Repo[]>((state) => state.Repo.repos)
 
@@ -17,8 +18,7 @@ const Component: React.FC = () => {
   }, [])
 
   return (
-    <>
-      <GlobalStyle />
+    <Layout>
       <Main className="main">
         <header className="main-header">
           <Logo data-testid="logo" />
@@ -38,7 +38,7 @@ const Component: React.FC = () => {
           </ul>
         </main>
       </Main>
-    </>
+    </Layout>
   )
 }
 
