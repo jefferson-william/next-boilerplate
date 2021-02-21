@@ -49,6 +49,7 @@ module.exports = {
     'react/prop-types': 'off',
     'react/no-array-index-key': 'warn',
     'react-hooks/rules-of-hooks': 'error',
+    'react/react-in-jsx-scope': 'off',
     'prettier/prettier': 'error',
     '@typescript-eslint/ban-types': 'off',
     'import/no-unresolved': 'error',
