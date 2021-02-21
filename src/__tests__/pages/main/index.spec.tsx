@@ -10,7 +10,7 @@ describe('pages/main', () => {
 
     moxios.onGet(route).reply(200, camelcase)
 
-    const { render } = await getPage({ route: '/main', useDocument: true })
+    const { render } = await getPage({ route: '/main' })
 
     render()
   })

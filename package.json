@@ -12,7 +12,8 @@
     "eslint": "eslint . --ext js,jsx,ts,tsx --fix",
     "tslint": "tslint --exclude 'node_modules/**' '**/*.{ts,tsx}'",
     "lint": "yarn eslint ; yarn stylelint ; yarn tslint",
-    "fix-styles": "stylelint --quiet 'src/**/*.{css,scss,tsx}' --fix"
+    "fix-styles": "stylelint --quiet 'src/**/*.{css,scss,tsx}' --fix",
+    "postinstall": "patch-package jest-runtime"
   },
   "dependencies": {
     "axios": "0.21.1",
@@ -86,6 +87,7 @@
     "next-server": "9.0.5",
     "node-sass": "5.0.0",
     "node-sass-alias-importer": "1.0.1",
+    "patch-package": "6.2.2",
     "prettier": "2.2.1",
     "react-app-rewire-aliases": "0.2.0",
     "react-app-rewired": "2.1.8",
