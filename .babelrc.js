@@ -1,3 +1,5 @@
+const isTest = process.env.NODE_ENV === 'test'
+
 module.exports = {
   presets: ['@babel/preset-react', '@babel/preset-typescript', '@zeit/next-typescript/babel'],
   plugins: [
@@ -8,7 +10,7 @@ module.exports = {
     '@babel/plugin-proposal-optional-chaining',
     'babel-plugin-inline-react-svg',
     ['styled-jsx/babel', { optimizeForSpeed: true }],
-    ['styled-components', { ssr: true, displayName: true, preprocess: false }],
+    ['styled-components', { ssr: !isTest, displayName: !isTest, preprocess: false }],
     [
       'module-resolver',
       {
