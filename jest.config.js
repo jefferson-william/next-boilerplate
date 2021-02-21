@@ -12,4 +12,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
   transformIgnorePatterns: ['<rootDir>/node_modules/'],
+  collectCoverage: true,
+  collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}'],
+  testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
 }

@@ -9,6 +9,7 @@
     "build": "next build",
     "export": "next export",
     "test": "react-app-rewired test",
+    "coverage": "cross-env CI=true yarn test --coverage",
     "stylelint": "stylelint '**/*.{css,scss,tsx}'",
     "eslint": "eslint . --ext js,jsx,ts,tsx --fix",
     "tslint": "tslint --exclude 'node_modules/**' '**/*.{ts,tsx}'",
