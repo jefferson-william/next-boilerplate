@@ -1,13 +1,12 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { NextPage } from 'next'
 import Link from 'next/link'
 import { END } from 'redux-saga'
 import { ReactComponent as Logo } from '~/assets/images/logo.svg'
-import { Home } from '~/pages/home/styles'
+import Layout from '~/components/Layout'
 import wrapperStore from '~/store'
 import * as RepoActions from '~/store/Repo/actions'
-import GlobalStyle from '~/styles/global'
+import { Home } from '~/styles/pages/home'
 import { Repo } from '~/types/store/Repo/state'
 import States from '~/types/store/rootStates'
 
@@ -15,8 +14,7 @@ const Component: NextPage = () => {
   const repos = useSelector<States, Repo[]>((state) => state.Repo.repos)
 
   return (
-    <>
-      <GlobalStyle />
+    <Layout>
       <Home className="main">
         <header className="main-header">
           <Logo data-testid="logo" />
@@ -36,7 +34,7 @@ const Component: NextPage = () => {
           </ul>
         </main>
       </Home>
-    </>
+    </Layout>
   )
 }
 

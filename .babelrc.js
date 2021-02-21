@@ -6,9 +6,14 @@ module.exports = {
     '@babel/plugin-syntax-dynamic-import',
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-runtime',
-    '@babel/plugin-transform-react-jsx',
     '@babel/plugin-proposal-optional-chaining',
     'babel-plugin-inline-react-svg',
+    [
+      '@babel/plugin-transform-react-jsx',
+      {
+        runtime: 'automatic',
+      },
+    ],
     ['styled-jsx/babel', { optimizeForSpeed: true }],
     ['styled-components', { ssr: !isTest, displayName: !isTest, preprocess: false }],
     [
