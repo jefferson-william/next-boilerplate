@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
+    "commit": "git-cz",
     "dev": "NODE_OPTIONS='--inspect' next dev",
     "start": "next start -p $PORT",
     "build": "next build",
@@ -12,7 +13,8 @@
     "eslint": "eslint . --ext js,jsx,ts,tsx --fix",
     "tslint": "tslint --exclude 'node_modules/**' '**/*.{ts,tsx}'",
     "lint": "yarn eslint ; yarn stylelint ; yarn tslint",
-    "fix-styles": "stylelint --quiet 'src/**/*.{css,scss,tsx}' --fix"
+    "fix-styles": "stylelint --quiet 'src/**/*.{css,scss,tsx}' --fix",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "axios": "0.21.1",
@@ -39,6 +41,8 @@
     "@babel/preset-env": "7.12.17",
     "@babel/preset-react": "7.12.13",
     "@babel/preset-typescript": "7.12.17",
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
     "@hot-loader/react-dom": "17.0.1",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
@@ -63,7 +67,10 @@
     "babel-plugin-inline-react-svg": "2.0.0",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-styled-components": "1.12.0",
+    "commitizen": "4.2.3",
+    "cross-env": "7.0.3",
     "customize-cra": "1.0.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "7.20.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "7.2.0",
@@ -79,8 +86,10 @@
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
+    "husky": "5.0.9",
     "jest-styled-components": "7.0.3",
     "jest-transform-stub": "2.0.0",
+    "lint-staged": "10.5.4",
     "mutationobserver-shim": "0.3.7",
     "next-server": "9.0.5",
     "node-sass": "5.0.0",
@@ -110,5 +119,13 @@
   },
   "cacheDirectories": [
     ".next/cache"
-  ]
+  ],
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }
