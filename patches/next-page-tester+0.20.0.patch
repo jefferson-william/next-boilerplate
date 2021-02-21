@@ -1,0 +1,12 @@
+diff --git a/node_modules/next-page-tester/dist/utils.js b/node_modules/next-page-tester/dist/utils.js
+index 59e916c..42fc1b8 100644
+--- a/node_modules/next-page-tester/dist/utils.js
++++ b/node_modules/next-page-tester/dist/utils.js
+@@ -81,6 +81,7 @@ exports.useMountedState = useMountedState;
+ // because we import them within our code which serves both environments :(
+ const nonIsolatedModules = [
+     'react',
++    'styled-components',
+     'next/dist/next-server/lib/head-manager-context',
+     'next/dist/next-server/lib/router-context',
+     'next/dist/next-server/lib/runtime-config',
