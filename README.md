@@ -152,6 +152,8 @@ Crie o arquivo `/.vscode/launch.json`.
 
 Lembre de trocar `<user-name>` pelo nome do usuário do seu ambiente e verifique se você está usando `nvm` como o aplicado no `runtimeExecutable`.
 
+Para funcionar, execute no VSCode o `All`.
+
 ```json
 {
   "version": "0.2.0",
@@ -160,9 +162,20 @@ Lembre de trocar `<user-name>` pelo nome do usuário do seu ambiente e verifique
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome",
-      "url": "http://localhost:5000",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
       "userDataDir": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "NextJS",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/next",
+      "env": {
+        "NODE_OPTIONS": "--inspect"
+      },
+      "port": 9229,
+      "console": "integratedTerminal"
     },
     {
       "name": "Jest Tests",
@@ -173,13 +186,13 @@ Lembre de trocar `<user-name>` pelo nome do usuário do seu ambiente e verifique
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "port": 9230
-    },
+    },[]
     {
       "type": "node",
       "request": "launch",
       "name": "Jest Current File",
       "runtimeExecutable": "/Users/jeffersonwilliammachado/.nvm/versions/node/v14.15.0/bin/yarn",
-      "args": ["test", "${fileBasenameNoExtension}", "--detectOpenHandles"],
+      "args": ["test", "${relativeFile}", "--detectOpenHandles"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "disableOptimisticBPs": true
@@ -188,10 +201,11 @@ Lembre de trocar `<user-name>` pelo nome do usuário do seu ambiente e verifique
   "compounds": [
     {
       "name": "All",
-      "configurations": ["Launch Chrome", "Jest Tests"]
+      "configurations": ["Launch Chrome", "NextJS"]
     }
   ]
 }
+
 ```
 
 ##### Observações
