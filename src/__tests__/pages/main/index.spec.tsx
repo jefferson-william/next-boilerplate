@@ -1,8 +1,8 @@
+import { act, waitFor } from '@testing-library/react'
 import { getMoxios } from '~/__mocks__/lib/axios'
 import { camelcase } from '~/__mocks__/store/Repo/sagas'
+import { myRender } from '~/__stubs__/render'
 import Main from '~/pages/main'
-import configureStore from '~/store'
-
 import '~/__mocks__/nextRouter'
 
 describe('pages/main', () => {
@@ -14,19 +14,7 @@ describe('pages/main', () => {
   })
 
   it('render', async () => {
-    const makeStore = {}
-    const store = configureStore(makeStore, { isServer: false, req: undefined })
-    const router: any = {
-      pathname: 'main',
-    }
-
-    const { getByTestId, getAllByTestId } = render(
-      <RouterContext.Provider value={router}>
-        <Provider store={store}>
-          <Main />
-        </Provider>
-      </RouterContext.Provider>
-    )
+    const { getByTestId, getAllByTestId } = myRender(<Main />)
 
     await waitFor(() => getAllByTestId('li'))
 

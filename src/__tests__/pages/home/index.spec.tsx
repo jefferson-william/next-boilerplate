@@ -1,8 +1,8 @@
-import { getPage } from 'next-page-tester'
+import { act, waitFor } from '@testing-library/react'
+import { getMoxios } from '~/__mocks__/lib/axios'
 import { camelcase } from '~/__mocks__/store/Repo/sagas'
+import { myRender } from '~/__stubs__/render'
 import Home from '~/pages/home'
-import configureStore from '~/store'
-
 import '~/__mocks__/nextRouter'
 
 describe('pages/home', () => {
@@ -14,19 +14,7 @@ describe('pages/home', () => {
   })
 
   it('render', async () => {
-    const makeStore = {}
-    const store = configureStore(makeStore, { isServer: false, req: undefined })
-    const router: any = {
-      pathname: 'home',
-    }
-
-    const { getByTestId, getAllByTestId } = render(
-      <RouterContext.Provider value={router}>
-        <Provider store={store}>
-          <Home />
-        </Provider>
-      </RouterContext.Provider>
-    )
+    const { getByTestId, getAllByTestId } = myRender(<Home />)
 
     act(() => {
       expect(getByTestId('logo')).toBeInTheDocument()
