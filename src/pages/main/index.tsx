@@ -1,11 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NextPage } from 'next'
-import Link from 'next/link'
-import { ReactComponent as Logo } from '~/assets/images/logo.svg'
 import Layout from '~/components/Layout'
+import Main from '~/components/Main'
 import * as RepoActions from '~/store/Repo/actions'
-import { Main } from '~/styles/pages/main'
 import { Repo } from '~/types/store/Repo/state'
 import States from '~/types/store/rootStates'
 
@@ -19,25 +17,7 @@ const Component: NextPage = () => {
 
   return (
     <Layout>
-      <Main className="main">
-        <header className="main-header">
-          <Logo data-testid="logo" />
-        </header>
-        <main>
-          <p>
-            <Link href="/home">
-              <a>Go to /home</a>
-            </Link>
-          </p>
-          <ul>
-            {repos.map(({ id, fullName }) => (
-              <li key={id} data-testid="li">
-                {fullName}
-              </li>
-            ))}
-          </ul>
-        </main>
-      </Main>
+      <Main repos={repos} href="/home" />
     </Layout>
   )
 }

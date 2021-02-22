@@ -1,12 +1,10 @@
 import { useSelector } from 'react-redux'
 import { NextPage } from 'next'
-import Link from 'next/link'
 import { END } from 'redux-saga'
-import { ReactComponent as Logo } from '~/assets/images/logo.svg'
 import Layout from '~/components/Layout'
+import Main from '~/components/Main'
 import wrapperStore from '~/store'
 import * as RepoActions from '~/store/Repo/actions'
-import { Home } from '~/styles/pages/home'
 import { Repo } from '~/types/store/Repo/state'
 import States from '~/types/store/rootStates'
 
@@ -15,25 +13,7 @@ const Component: NextPage = () => {
 
   return (
     <Layout>
-      <Home className="main">
-        <header className="main-header">
-          <Logo data-testid="logo" />
-        </header>
-        <main>
-          <p>
-            <Link href="/">
-              <a>Go to /</a>
-            </Link>
-          </p>
-          <ul>
-            {repos.map(({ id, fullName }) => (
-              <li key={id} data-testid="li">
-                {fullName}
-              </li>
-            ))}
-          </ul>
-        </main>
-      </Home>
+      <Main repos={repos} href="/main" />
     </Layout>
   )
 }
