@@ -1,11 +1,11 @@
 {
-  "name": "next-boilerplate",
+  "name": "boilerplate",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
     "dev": "NODE_OPTIONS='--inspect' next dev",
-    "start": "next start -p $PORT",
+    "start": "next start",
     "build": "next build",
     "export": "next export",
     "test": "react-app-rewired test",
@@ -18,6 +18,8 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@material-ui/core": "4.11.3",
+    "@material-ui/icons": "4.11.2",
     "axios": "0.21.1",
     "immer": "8.0.1",
     "next": "10.0.7",

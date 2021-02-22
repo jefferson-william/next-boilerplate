@@ -12,16 +12,11 @@ export default createGlobalStyle`
   html {
     display: table;
   }
-  body {
-    font-size: 16px;
-    font-family: 'Red Rat Display', Arial, Helvetica, sans-serif;
-  }
   html,
   body,
   #__next {
     width: 100%;
     height: 100%;
-    margin: 0;
   }
   #__next {
     display: flex;

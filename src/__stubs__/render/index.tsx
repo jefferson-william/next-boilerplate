@@ -3,13 +3,14 @@ import { Provider } from 'react-redux'
 import { RouterContext } from 'next-server/dist/lib/router-context'
 import { Router } from 'next/router'
 import { ThemeProvider } from 'styled-components'
+import { Theme } from '@material-ui/core/'
 import { render } from '@testing-library/react'
 import { store } from '~/store'
-import theme, { ThemeProps } from '~/styles/theme'
+import theme from '~/styles/theme'
 
 interface MyRenderOptions {
   router?: Partial<Router>
-  theme?: ThemeProps
+  theme?: Theme
 }
 
 export const myRender = (Component: any, options?: MyRenderOptions) => {

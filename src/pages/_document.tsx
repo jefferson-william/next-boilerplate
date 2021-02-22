@@ -1,28 +1,21 @@
 /* eslint-disable react/no-danger */
+import React from 'react'
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import { ServerStyleSheets } from '@material-ui/core/styles'
+import theme from '~/styles/theme'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-    const sheet = new ServerStyleSheet()
+    const sheet = new ServerStyleSheets()
 
-    try {
-      const page = ctx.renderPage((App: any) => (props: any) => sheet.collectStyles(<App {...props} />))
-      const styleTags = sheet.getStyleElement()
+    const page = ctx.renderPage((App: any) => (props: any) => sheet.collect(<App {...props} />))
+    const styleTag = sheet.getStyleElement()
 
-      return {
-        ...initialProps,
-        ...page,
-        styles: (
-          <>
-            {initialProps.styles}
-            {styleTags}
-          </>
-        ),
-      }
-    } finally {
-      sheet.seal()
+    return {
+      ...initialProps,
+      ...page,
+      styles: [...React.Children.toArray(initialProps.styles), styleTag],
     }
   }
 
@@ -31,12 +24,13 @@ export default class MyDocument extends Document {
       <Html lang="pt-BR">
         <Head>
           <meta charSet="utf-8" />
-          <meta name="theme-color" content="#efefef" />
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="icon" href={`${process.env.PUBLIC_URL}/icon-32x32.png`} sizes="32x32" />
           <link rel="icon" href={`${process.env.PUBLIC_URL}/icon-192x192.png`} sizes="192x192" />
           <link rel="apple-touch-icon" href={`${process.env.PUBLIC_URL}/icon-192x192.png`} />
           <link rel="manifest" href={`${process.env.PUBLIC_URL}/manifest.json`} />
-          {this.props.styles}
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
           <script
             dangerouslySetInnerHTML={{
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -48,7 +42,7 @@ export default class MyDocument extends Document {
             }}
           />
         </Head>
-        <body data-theme="default">
+        <body>
           <noscript>
             <iframe
               title="GTM"
