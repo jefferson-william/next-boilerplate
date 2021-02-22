@@ -12,6 +12,9 @@ export default createGlobalStyle`
   html {
     display: table;
   }
+  body {
+    font-size: 14px;
+  }
   html,
   body,
   #__next {
