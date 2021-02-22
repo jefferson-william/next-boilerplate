@@ -40,6 +40,12 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-case-declarations': 'off',
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: ['@material-ui/*/*/*', '!@material-ui/core/test-utils/*'],
+      },
+    ],
     'max-len': ['error', { code: 120 }],
     'import/no-named-as-default': 'off',
     'import/prefer-default-export': 'off',
